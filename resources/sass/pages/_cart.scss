@@ -1,0 +1,763 @@
+html {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  input,
+  textarea,
+  select,
+  button {
+    outline: none;
+  }
+  input {
+    line-height: normal;
+  }
+  label,
+  button {
+    cursor: pointer;
+  }
+  a {
+    text-decoration: none;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+
+  }
+  body {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+  }
+  .layout-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .layout {
+    display: grid;
+    /* grid-template-columns: column-size column-size .... ; */
+    grid-template-columns: 200px 200px 100px;
+    grid-template-columns: calc(50% - 40px) calc(20% - 40px) 30%;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+    grid-gap: 20px;
+    grid-template-rows: 200px 600px;
+    grid-template-rows: auto auto;
+    /* fr = free space */
+    /* grid-column-gap: 40px; */
+    /* gap count: column count - 1 */
+    /* grid-gap: grid-row-gap grid-column-gap */
+    /* track line bắt đầu từ số 1*/
+    /* Số cột 3 -> track line = số cột + 1 */
+  }
+  /* 4 columns
+  800px
+  row1: 350
+  row2: 100
+  row3: 350
+  */
+  .layout2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 350px 100px 350px;
+    grid-gap: 30px;
+    padding: 30px;
+    grid-template-areas:
+      "h1 h1 h2 h3"
+      "h4 h5 h2 h3"
+      "h4 h5 h6 h6";
+  }
+  .layout-item {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .layout-item:first-child {
+    grid-area: h1;
+  }
+  .layout-item:nth-child(2) {
+    grid-area: h2;
+  }
+  .layout-item:nth-child(3) {
+    grid-area: h3;
+  }
+  .layout-item:nth-child(4) {
+    grid-area: h4;
+  }
+  .layout-item:nth-child(5) {
+    grid-area: h5;
+  }
+  .layout-item:last-child {
+    grid-area: h6;
+  }
+  /* span 2 */
+  /* .layout-item:first-child {
+    grid-column: 1/3;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+  }
+  .layout-item:nth-child(2),
+  .layout-item:nth-child(3) {
+    grid-row: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+  .layout-item:nth-child(4),
+  .layout-item:nth-child(5) {
+    grid-row: 2 / span 2;
+    grid-row: 2 / span 2;
+  }
+  .layout-item:last-child {
+    grid-column: 3 / span 2;
+  } */
+  /* grid-template-areas: dùng cho phần tử cha
+  grid-area: dùng cho phần tử con
+  "h1 h1 h2 h3"
+  "h4 h5 h2 h3"
+  "h4 h5 h6 h6"
+  */
+  .post-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 25px;
+    grid-template-areas:
+      "h1 h2 h3"
+      "h1 h4 h5";
+    padding: 25px;
+  }
+  .post-item:first-child {
+    grid-area: h1;
+  }
+  .post-item:nth-child(2) {
+    grid-area: h2;
+  }
+  .post-item:nth-child(3) {
+    grid-area: h3;
+  }
+  .post-item:nth-child(4) {
+    grid-area: h4;
+  }
+  .post-item:nth-child(5) {
+    grid-area: h5;
+  }
+  .post-image {
+    border-radius: 12px;
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    flex-shrink: 0;
+  }
+  .post-content {
+    font-weight: 300;
+    padding: 25px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .post-image--large {
+    height: auto;
+  }
+  .post-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .post-title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #3f2a78;
+  }
+  .post-time {
+    color: #ccc;
+    text-transform: uppercase;
+  }
+  /* card-list */
+  .cards {
+    --spacing: 25px;
+    --columns: 4;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--spacing));
+  }
+
+   /* card-list */
+   .cards-3 {
+    --spacing: 50px;
+    --columns: 3;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--spacing));
+  }
+
+     /* card-list */
+     .cards-2 {
+        --spacing: 50px;
+        --columns: 2;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calc(-1 * var(--spacing));
+      }
+
+  @media screen and (max-width: 1023px) {
+    .cards {
+      --columns: 3;
+    }
+    .cards-3{
+        --columns: 2;
+      }
+      .cards-2{
+        --columns: 2;
+      }
+
+
+  }
+  @media screen and (max-width: 768px) {
+    .cards {
+/*       --spacing: 15px; */
+      --columns: 2;
+    }
+    .cards-3{
+        --columns: 1;
+/*         padding: 0;
+        margin: 0; */
+      }
+      .cards-2{
+        --columns: 1;
+/*         padding: 0;
+        margin: 0; */
+      }
+
+  }
+
+  @media screen and (max-width: 500px) {
+    .cards {
+/*       --spacing: 15px; */
+      --columns: 1;
+    }
+    .cards-3{
+        --columns: 1;
+/*         padding: 0;
+        margin: 0; */
+      }
+      .cards-2{
+        --columns: 1;
+/*         padding: 0;
+        margin: 0; */
+      }
+      .card__image__style{
+        height: 100%;
+        width: auto;
+        margin: 0;
+      }
+
+      .info__view {
+        width: 50%;
+        height: 90%;
+        margin: 3% 25%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+  }
+
+
+  .card {
+    border-radius: 0px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255 , 0);
+/*     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    width: calc(calc(100% / var(--columns)) - var(--spacing));
+    margin-left: var(--spacing);
+    margin-bottom: var(--spacing);
+
+  }
+  .card-image-new{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 10px;
+  }
+  .card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+   /*  border-radius: 10px; */
+   margin: 0;
+
+    h3{
+        font-size: 1.2rem;
+    }
+  }
+  .card-top {
+    padding: 15px;
+  }
+  .card-title {
+    font-weight: 600;
+    margin-bottom: 25px;
+    word-break: break-all;
+    display: -webkit-box;
+/*     -webkit-line-clamp: 3; */
+    -webkit-box-orient: vertical;
+ /*    overflow: hidden; */
+    text-overflow: ellipsis;
+    word-break: break-word;
+
+    /* How to – At Home Footlogix Pedicure */
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 23px;
+        /* or 135% */
+        letter-spacing: 1.275px;
+        text-transform: uppercase;
+
+        color: #000000;
+
+
+
+    a:hover{
+        color:#C81F24 ;
+    }
+
+  }
+  .card-user {
+    display: flex;
+    align-items: center;
+  }
+  .card-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .card-user-info {
+    padding-left: 20px;
+    flex: 1;
+    /* One of the most neglected part of the body is our feet. We walk around on them all day, bash */
+
+
+        font-family: 'Crimson Text';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 23px;
+        /* or 135% */
+
+        color: #444444;
+  }
+  .card-user-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+  .card-user-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .card-user-top ion-icon {
+    color: #20e3b2;
+    margin-left: 5px;
+  }
+  .card-user-game {
+    color: #999;
+    font-weight: 300;
+    font-size: 13px;
+  }
+  .card-bottom {
+    padding: 25px;
+ /*    border-top: 1px solid #eee; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-live {
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: #ff6651;
+  }
+  .card-live span {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  .card-watching {
+    font-size: 13px;
+    color: #999;
+    font-weight: 300;
+
+
+    /* Read More */
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 24px;
+        /* identical to box height, or 200% */
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+
+        color: #000000;
+
+
+  }
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .card-top {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-user,
+  .card-bottom {
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+/* .card {
+    display:inline-block;
+    width:100%;
+    height:100%;
+    margin-top:0;
+}
+.card-top{
+    display:inline-block;
+    width:100%;
+    height:100%;
+    margin-top:0;
+} */
+
+
+.card__style{
+    width: 100%;
+    border-radius: 0;
+
+    .img__center{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card__image__style{
+        /* IMAGE */
+        border-radius: 0px;
+
+    }
+
+        .card__2__h2{
+            /* Want to learn comfortably from your sofa? */
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 31px;
+                /* or 130% */
+                color: #000000;
+                padding: 1rem ;
+        }
+
+        .h2_bg{
+            /* Rectangle */
+
+            background: #F5EAE7;
+            border-radius: 0px;
+
+        }
+
+/* Extra large devices (large laptops and desktops, 1200px and 1400px) col-xl */
+        @media only screen and (min-width: 992px)  and (max-width: 1200px) {
+            .card__style__position{
+                position: relative;
+            }
+
+          .h2_bg {
+                position: absolute;
+                background: #F5EAE7;
+                border-radius: 0px;
+                width: 70%;
+            }
+            .card__2__p{
+                padding-top: 90px !important;
+            }
+
+        }
+
+        @media only screen and (min-width: 1200px) and (max-width: 1400px){
+            .card__style__position{
+                position: relative;
+            }
+
+            .h2_bg {
+                position: absolute;
+                background: #F5EAE7;
+                border-radius: 0px;
+                width: 70%;
+            }
+
+            .card__2__p{
+                padding-top: 90px !important;
+            }
+
+        }
+
+
+        @media only screen and (min-width: 1400px){
+            .card__style__position{
+                position: relative;
+            }
+
+            .h2_bg {
+                position: absolute;
+                background: #F5EAE7;
+                border-radius: 0px;
+                width: 70%;
+            }
+
+            .card__2__p{
+                padding-top: 90px !important;
+            }
+
+        }
+
+
+    .card__image__style__01{
+        /* IMAGE */
+            width: 545px;
+            height: 233px;
+            border-radius: 0px;
+
+    }
+
+    .card{
+
+
+
+        .card__2__p{
+            /* From today on, you can do it with Biotek! With our video courses you will no longer be afraid of being late! You can choose where and when to follow them. */
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 29px;
+                /* or 180% */
+                padding: 1rem 0;
+                color: #000000;
+                text-align: left;
+
+        }
+
+        p{
+            /* With our Online Training you’ll have no rivals, being the best in your field! */
+            width: 100%;
+            font-family: 'Open Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 29px;
+                    /* or 180% */
+                    text-align: center;
+                    padding: 1rem 0;
+                    color: #000000;
+
+
+        }
+    }
+
+}
+
+.card__text_style{
+    justify-content: center;
+
+    h3{
+        /* Lara vu */
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 38px;
+    /* identical to box height, or 131% */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #000000;
+    padding-bottom: 10px;
+
+    }
+
+    span{
+ /* Discover our hand-picked collections */
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 25px;
+        /* identical to box height, or 132% */
+        color: #5A5A5A;
+    }
+
+    p{
+        /* Find the perfect match of products, styles, and treatments for you. Browse our brow form sketches to identify your brow ID and discover our recommendations to best enhance your natural beauty. */
+        font-family: 'Crimson Text';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 23px;
+        /* or 135% */
+
+        color: #444444;
+        margin-left: 1rem;
+
+
+    }
+}
+
+.card__bg__img{
+
+    background-repeat : no-repeat;
+    background-size: cover;
+
+
+}
+
+.display__style{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    .card__text_style{
+        flex-grow: 1;
+        position: relative;
+
+        .img__card__text_style{
+        }
+
+        .text__card__left{
+            margin: 100px 0;
+            display: flex;
+            flex-direction: column;
+
+            button{
+                width: 100%;
+                text-align: center;
+                /* Rectangle */
+                box-sizing: border-box;
+                border: 1px solid #000000;
+                border-radius: 0px;
+
+            }
+
+        }
+    }
+
+    .card{
+        flex-grow: 1;
+
+    }
+}
+
+.card__blog__style{
+/* Rectangle */
+
+background: #FFFFFF;
+box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
+border-radius: 0px;
+
+}
+
+.image_content2{
+    width: 100%;
+    height: auto;
+
+}
+
+
+
+
+.card__top__position{
+    /* Rectangle */
+
+        position: absolute;
+        width: 65px;
+        height: 79px;
+        left: 10px;
+        top: 0px;
+
+        background: #FEEAE7;
+        border-radius: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        span{
+            text-align: center;
+        }
+
+}
+
+.text__header__blog{
+
+    h2{
+        /* BEAUTY Blog */
+
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 29px;
+        line-height: 38px;
+        /* identical to box height, or 131% */
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+
+        color: #000000;
+
+
+    }
+
+    p{
+        /* Get the latest insights on products and treatments */
+
+
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 25px;
+        /* identical to box height, or 132% */
+        text-align: center;
+
+        color: #5A5A5A;
+
+
+    }
+}
+
